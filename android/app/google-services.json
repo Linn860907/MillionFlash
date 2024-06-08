@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "528911137933",
+    "firebase_url": "https://millionflashshop-default-rtdb.firebaseio.com",
+    "project_id": "millionflashshop",
+    "storage_bucket": "millionflashshop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528911137933:android:adf7bb73733e0eb23176c4",
+        "android_client_info": {
+          "package_name": "com.example.millionflashapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528911137933-dmmmg3vn3t9btblru2hcuifpbnt9dloe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.millionflashapp",
+            "certificate_hash": "34896e93649312bd4dce68feb494e8bbce1f80a2"
+          }
+        },
+        {
+          "client_id": "528911137933-e9jv01cu7ar68f1mc8revheukkr6pick.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGoFUY4pJPSTgA9l_oIgwL620JV7s_Oks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528911137933-e9jv01cu7ar68f1mc8revheukkr6pick.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "528911137933-gaeng8h7360qovv9n96rua84g4rj9hv8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.millionflashapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,63 @@
+name: millionflashapp
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.6 <4.17.3'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cloud_firestore:
+  carousel_slider:
+  firebase_core:
+  firebase_auth:
+  firebase_ui_auth:
+  firebase_ui_oauth_google:
+  google_sign_in: 
+  provider:
+  flutter_spinkit:
+  cached_network_image: ^3.0.0
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/category/bag.png
+    - assets/category/cap.png
+    - assets/category/clothes.png
+    - assets/category/hoodie.png
+    - assets/category/jeans.png
+    - assets/category/skirt.png
+    - assets/category/tank.png
+    - assets/category/tshirt.png
+    - assets/category/home.png
+    - assets/category/person.png
+    - assets/category/search.png
+    - assets/category/shoppingcart.png
+    - assets/items/1.jpg
+    - assets/items/2.jpg
+    - assets/items/3.jpg
+    - assets/items/4.jpg
+    - assets/items/5.jpg
+    - assets/items/6.jpg
+    - assets/items/7.jpg
+    - assets/items/8.jpg
+    - assets/items/9.jpg
+    - assets/items/10.jpg
+    - assets/items/11.jpg
+    - assets/items/12.jpg
+    - assets/items/13.jpg
+    - assets/items/14.jpg
+    - assets/items/15.jpg
+    - assets/items/16.jpg
+
+
+
