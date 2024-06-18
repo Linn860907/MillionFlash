@@ -9,10 +9,10 @@ class CategoryProvider with ChangeNotifier{
 
 
   CategoryProvider.initialize(){
-    _loadCategories();
+    loadCategories();
   }
 
-  _loadCategories() async {
+  loadCategories() async {
     
       categories = await _categoryServices.getCategories();
       notifyListeners();

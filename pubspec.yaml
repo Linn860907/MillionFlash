@@ -19,6 +19,8 @@ dependencies:
   provider:
   flutter_spinkit:
   cached_network_image: ^3.0.0
+  get:
+  uuid:
   
 
 dev_dependencies:
@@ -30,14 +32,14 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - assets/category/bag.png
-    - assets/category/cap.png
-    - assets/category/clothes.png
-    - assets/category/hoodie.png
-    - assets/category/jeans.png
-    - assets/category/skirt.png
-    - assets/category/tank.png
-    - assets/category/tshirt.png
+    # - assets/category/bag.png
+    # - assets/category/cap.png
+    # - assets/category/clothes.png
+    # - assets/category/hoodie.png
+    # - assets/category/jeans.png
+    # - assets/category/skirt.png
+    # - assets/category/tank.png
+    # - assets/category/tshirt.png
     - assets/category/home.png
     - assets/category/person.png
     - assets/category/search.png

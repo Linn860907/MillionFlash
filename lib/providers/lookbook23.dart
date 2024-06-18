@@ -9,12 +9,12 @@ class LookBook23Provider with ChangeNotifier{
 
 
   LookBook23Provider.initialize(){
-    _loadLookBook23();
+    loadLookBook23();
   }
 
-  _loadLookBook23() async {
+  loadLookBook23() async {
     
-      lookbook23 = await _lookbook23Services.getCategories();
+      lookbook23 = await _lookbook23Services.getLookbook23();
       notifyListeners();
       
   }

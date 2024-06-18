@@ -5,7 +5,7 @@ class LookBook23Services {
   String collection = 'lookbook23';
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<List<LookBook23Model>> getCategories() async {
+  Future<List<LookBook23Model>> getLookbook23() async {
     try {
       QuerySnapshot result = await _firestore.collection(collection).get();
       List<LookBook23Model> lookbook23 = result.docs.map((doc) => LookBook23Model.fromsnapshot(doc)).toList();

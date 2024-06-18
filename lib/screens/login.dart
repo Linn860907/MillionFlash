@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:millionflashapp/helpers/commons.dart';
 import 'package:millionflashapp/helpers/screen_navigation.dart';
+import 'package:millionflashapp/providers/category.dart';
+import 'package:millionflashapp/providers/items.dart';
+import 'package:millionflashapp/providers/lookbook21.dart';
+import 'package:millionflashapp/providers/lookbook22.dart';
+import 'package:millionflashapp/providers/lookbook23.dart';
 import 'package:millionflashapp/providers/user.dart';
 import 'package:millionflashapp/screens/home.dart';
 import 'package:millionflashapp/screens/registration.dart';
@@ -19,6 +24,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context);
+    final categoryProvider = Provider.of<CategoryProvider>(context);
+    final itemsProvider = Provider.of<ItemsProvider>(context);
+    final lookbook21Provider = Provider.of<LookBook21Provider>(context);
+    final lookbook22Provider = Provider.of<LookBook22Provider>(context);
+    final lookbook23Provider = Provider.of<LookBook23Provider>(context);
+
     return Scaffold(
       key: _key,
       body: authProvider.status == Status.Authenticating
@@ -62,6 +73,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               SnackBar(content: Text("Login failed!")));
                           return;
                         }
+                        categoryProvider.loadCategories();
+                        itemsProvider.loadItems();
+                        lookbook21Provider.loadLookBook21();
+                        lookbook22Provider.loadLookBook22();
+                        lookbook23Provider.loadLookBook23();
                         authProvider.cleanControllers();
                         changeScreenReplacement(context, Home());
                       },

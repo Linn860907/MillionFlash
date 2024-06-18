@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:millionflashapp/helpers/commons.dart';
 import 'package:millionflashapp/helpers/screen_navigation.dart';
 import 'package:millionflashapp/providers/user.dart';
+import 'package:millionflashapp/screens/AboutMillionFlash.dart';
 import 'package:millionflashapp/screens/home.dart';
 import 'package:millionflashapp/screens/lookbook21.dart';
 import 'package:millionflashapp/screens/lookbook22.dart';
 import 'package:millionflashapp/screens/lookbook23.dart';
+import 'package:millionflashapp/screens/order.dart';
+import 'package:millionflashapp/screens/store.dart';
 import 'package:millionflashapp/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -48,7 +51,7 @@ class MyDrawer extends StatelessWidget{
         ),
         ListTile(
           onTap: () {
-            changeScreen(context, Home());
+            changeScreen(context, Store());
           },
           // leading: Icon(Icons.store),
           title: CustomText(
@@ -82,10 +85,21 @@ class MyDrawer extends StatelessWidget{
                 },
               )
             ],),
-       
         ListTile(
           onTap: () {
-            changeScreen(context, Home());
+            changeScreen(context, OrdersScreen());
+          },
+          // leading: Icon(Icons.store),
+          title: CustomText(
+              text: "Order",
+              size: 16,
+              color: black,
+              weight: FontWeight.normal,
+              decoration: TextDecoration.none),
+        ),
+        ListTile(
+          onTap: () {
+            changeScreen(context, AboutMillionFlash());
           },
           // leading: Icon(Icons.assignment_ind),
           title: CustomText(

@@ -7,7 +7,7 @@ class ItemModel {
   static const PRICE = 'price';
   static const OLDPRICE = 'oldprice';
   static const SNAME = 'sname';
-  static const WISHLIST = 'wishlist'; 
+  static const USER_LIKES = "userLikes"; 
   static const CATEGORY = 'category';
   static const FEATURED = 'featured';
   static const ITEMSID = 'itemsid';
@@ -15,24 +15,29 @@ class ItemModel {
   late int _id;
   late String _name;
   late String _image;
-  late String _price;
-  late String _oldprice;
+  late int _price;
+  late int _oldprice;
   late String _sname;
-  late bool _wishlist;
   late String _category;
   late bool _featured;
   late int _itemsId;
 
+  late List<String> _userLikes;
+
   int get id => _id;
   String get name => _name;
   String get image => _image;
-  String get price => _price;
-  String get oldprice => _oldprice;
+  int get price => _price;
+  int get oldprice => _oldprice;
   String get sname => _sname;
-  bool get wishlist => _wishlist;
   String get category => _category;
   bool get featured => _featured;
   int get itemsId => _itemsId;
+
+  List<String> get userLikes => _userLikes;
+
+  // public variable
+  bool liked = false;
 
   ItemModel.fromsnapshot(DocumentSnapshot snapshot) {
     Map<String, dynamic>? data = snapshot.data() as Map<String, dynamic>?;
@@ -43,23 +48,32 @@ class ItemModel {
       _price = data[PRICE] ?? '';
       _oldprice = data[OLDPRICE] ?? '';
       _sname = data[SNAME] ?? '';
-      _wishlist = data[WISHLIST] ?? false;
       _category = data[CATEGORY] ?? '';
       _featured = data[FEATURED] ?? false;
-      _itemsId = data[ITEMSID] ?? 0;
+      _itemsId = data[ITEMSID] ?? '';
+      _userLikes = List<String>.from(data[USER_LIKES] ?? []);
     } else {
       _id = 0;
       _name = '';
       _image = '';
-      _price = '';
-      _oldprice = '';
+      _price = 0;
+      _oldprice = 0;
       _sname = '';
-      _wishlist = false;
       _category = '';
       _featured = false;
       _itemsId = 0;
+      _userLikes = [];
     }
   }
 
+  int _parseToInt(dynamic value) {
+    if (value is int) {
+      return value;
+    } else if (value is String) {
+      return int.tryParse(value) ?? 0;
+    } else {
+      return 0;
+    }
+  }
 
 }

@@ -2,7 +2,7 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:millionflashapp/helpers/commons.dart';
 import 'package:millionflashapp/helpers/screen_navigation.dart';
-import 'package:millionflashapp/screens/ShoppingCart.dart';
+import 'package:millionflashapp/screens/cart.dart';
 import 'package:millionflashapp/screens/account.dart';
 import 'package:millionflashapp/screens/home.dart';
 import 'package:millionflashapp/screens/login.dart';
@@ -40,7 +40,7 @@ class BottomNavBar extends StatelessWidget {
                   image: "shoppingcart.png",
                   name: 'cart',
                   onTap: () {
-                    changeScreen(context, ShoppingCart());
+                    changeScreen(context, CartScreen());
                   },
                 ),
                 BottomNavIcon(

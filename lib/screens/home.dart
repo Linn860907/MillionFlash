@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:millionflashapp/cotroller/counterController.dart';
 import 'package:millionflashapp/helpers/screen_navigation.dart';
 import 'package:millionflashapp/helpers/commons.dart';
 import 'package:millionflashapp/providers/app.dart';
@@ -7,10 +10,11 @@ import 'package:millionflashapp/providers/category.dart';
 import 'package:millionflashapp/providers/items.dart';
 import 'package:millionflashapp/providers/products.dart';
 import 'package:millionflashapp/providers/user.dart';
+import 'package:millionflashapp/screens/order.dart';
 import 'package:millionflashapp/widgets/bottom_navigationbar.dart';
 import 'package:millionflashapp/widgets/drawer.dart';
 import 'package:provider/provider.dart';
-import 'package:millionflashapp/screens/ShoppingCart.dart';
+import 'package:millionflashapp/screens/cart.dart';
 import 'package:millionflashapp/screens/category.dart';
 import 'package:millionflashapp/screens/detail.dart';
 import 'package:millionflashapp/widgets/categories.dart';
@@ -20,6 +24,9 @@ import 'package:millionflashapp/widgets/items.dart';
 import 'package:millionflashapp/widgets/small_floating_button.dart';
 import 'package:millionflashapp/widgets/loading.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+
+import 'package:get/get.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -47,40 +54,15 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           GestureDetector(
             onTap: () {
-              changeScreen(context, ShoppingCart());
+              changeScreen(context, CartScreen());
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Stack(
                 children: [
-                  Image.asset(
-                    'assets/category/shoppingcart.png',
-                    width: 30,
-                    height: 30,
-                  ),
-                  Positioned(
-                    right: 3,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: grey, offset: Offset(2, 1), blurRadius: 2),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 4, left: 4),
-                        child: CustomText(
-                          text: '2',
-                          color: red,
-                          size: 12,
-                          weight: FontWeight.bold,
-                          decoration: TextDecoration.none,
-                        ),
-                      ),
-                    ),
-                  )
+                  IconButton(icon:Icon(Icons.shopping_cart),onPressed: (){
+                    changeScreen(context, CartScreen());
+                  }),
                 ],
               ),
             ),
@@ -148,3 +130,29 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+// class Home extends StatelessWidget {
+//   final CounterController counterController = Get.put(CounterController());
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Obx(() => Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: [
+//           Center(child: Text("Clicks: ${counterController.counter.value}")),
+//           SizedBox(
+//             height:10
+//           ),
+//           Center(
+//             child: ElevatedButton(onPressed: (){
+//               Get.to(OtherScreen());
+//             }, child: Text("Open Other Screen")),
+//           ),
+//         ],
+//       ),),
+//       floatingActionButton: FloatingActionButton(onPressed: (){counterController.increment();},
+//       child: Icon(Icons.add),),
+//     );
+//   }
+// }

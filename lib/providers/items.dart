@@ -6,14 +6,14 @@ class ItemsProvider with ChangeNotifier{
   ItemServices _itemServices = ItemServices();
   List<ItemModel> items = [];
   List<ItemModel> itemsByCategory = [];
-  List<ItemModel> itemsByItemsId = [];
+  // List<ItemModel> itemsByItemsId = [];
   List<ItemModel> itemsSearched = [];  
 
   ItemsProvider.initialize(){
-    _loadItems();
+    loadItems();
       }
 
-  _loadItems()async{
+  loadItems()async{
     items = await _itemServices.getItems();
     notifyListeners();
   }
@@ -23,10 +23,10 @@ class ItemsProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  loadItemsByItemsId({required int itemsId})async{
-    itemsByItemsId = await _itemServices.getItemsByItemsId(itemsId: itemsId, id: itemsId);
-    notifyListeners();
-  }
+  // loadItemsByItemsId({required int itemsId})async{
+  //   itemsByItemsId = await _itemServices.getItemsByItemsId(itemsId: itemsId, id: itemsId);
+  //   notifyListeners();
+  // }
 
   search({required String itemsName}) async{
     itemsSearched = await _itemServices.searchItems(itemsName: itemsName);

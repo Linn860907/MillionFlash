@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:millionflashapp/helpers/screen_navigation.dart';
 import 'package:millionflashapp/providers/app.dart';
 import 'package:millionflashapp/providers/items.dart';
+import 'package:millionflashapp/screens/category.dart';
 import 'package:millionflashapp/screens/items_search.dart';
 import 'package:millionflashapp/widgets/bottom_navigation_icons.dart';
 import 'package:millionflashapp/widgets/bottom_navigationbar.dart';
@@ -55,7 +56,7 @@ class _SearchState extends State<Search> {
                   title: TextField(
                     textInputAction: TextInputAction.search,
                     onSubmitted: (pattern) async{
-                      // app.ChangeLoading();
+                      app.ChangeLoading();
                       await itemsProvider.search(itemsName: pattern);
                       changeScreen(context, ItemSearchScreen());
                     },
@@ -78,7 +79,19 @@ class _SearchState extends State<Search> {
                 scrollDirection: Axis.horizontal,
                 itemCount: categoryProvider.categories.length,
                 itemBuilder: (context, index) {
-                  return CategoryWidget(category: categoryProvider.categories[index]);
+                  return GestureDetector(
+                    onTap: ()async{
+                      // app.ChangeLoading();
+                      await itemsProvider.loadItemsByCategory(
+                        categoryName: categoryProvider.categories[index].name);
+                        changeScreen(
+                          context, CategoryScreen(
+                            categoryModel: categoryProvider.categories[index]
+                            ));
+                      // app.ChangeLoading();
+                    },
+                    child: CategoryWidget(category: categoryProvider.categories[index]));
+
                 },
               )),
           ]

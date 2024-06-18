@@ -16,16 +16,16 @@ class ItemServices {
     }
   }
 
-  Future<List<ItemModel>> getItemsByItemsId({required int id, required int itemsId}) async {
-    try {
-      QuerySnapshot result = await _firestore.collection(collection).where("itemsId", isEqualTo: id).get();
-      List<ItemModel> items = result.docs.map((doc) => ItemModel.fromsnapshot(doc)).toList();
-      return items;
-    } catch (e) {
-      print(e);
-      return [];
-    }
-  }
+  // Future<List<ItemModel>> getItemsByItemsId({required int id, required int itemsId}) async {
+  //   try {
+  //     QuerySnapshot result = await _firestore.collection(collection).where("itemsId", isEqualTo: id).get();
+  //     List<ItemModel> items = result.docs.map((doc) => ItemModel.fromsnapshot(doc)).toList();
+  //     return items;
+  //   } catch (e) {
+  //     print(e);
+  //     return [];
+  //   }
+  // }
 
   Future<List<ItemModel>> getItemsOfCategory({required String category}) async {
     try {
@@ -49,5 +49,10 @@ class ItemServices {
       return [];
     }
   }
-  
+
+  void likeOrDislikeProduct({required String id, required List<String> userLikes}) {
+    _firestore.collection(collection).doc(id).update({
+      "userLikes": userLikes
+    });
+  }
 }

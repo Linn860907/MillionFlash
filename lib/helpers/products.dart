@@ -5,7 +5,7 @@ class ProductServices {
   String collection = 'products';
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<List<ProductModel>> getProduts() async {
+  Future<List<ProductModel>> getProducts() async {
     try {
       QuerySnapshot result = await _firestore.collection(collection).get();
       List<ProductModel> products = result.docs.map((doc) => ProductModel.fromsnapshot(doc)).toList();

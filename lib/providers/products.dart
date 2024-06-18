@@ -15,7 +15,7 @@ class ProductProvider with ChangeNotifier{
   }
 
   _loadProducts()async{
-    products = await _productServices.getProduts();
+    products = await _productServices.getProducts();
     notifyListeners();
   }
 

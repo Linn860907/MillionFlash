@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:millionflashapp/helpers/items.dart';
 import 'package:millionflashapp/helpers/screen_navigation.dart';
 import 'package:millionflashapp/models/items.dart';
 import 'package:millionflashapp/helpers/commons.dart';
 import 'package:millionflashapp/providers/items.dart';
 import 'package:millionflashapp/screens/detail.dart';
 import 'package:millionflashapp/widgets/custom_text.dart';
+import 'package:millionflashapp/widgets/likewidget.dart';
 import 'package:millionflashapp/widgets/loading.dart';
 import 'package:millionflashapp/widgets/small_floating_button.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
 
 class ItemsWidget extends StatelessWidget {
   final ItemModel items;
@@ -17,6 +18,7 @@ class ItemsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final itemsProvider = Provider.of<ItemsProvider>(context);
+    final itemServices = ItemServices();
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
@@ -50,10 +52,20 @@ class ItemsWidget extends StatelessWidget {
                               children: <Widget>[
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child: items.wishlist
-                                      ? Icon(Icons.favorite, color: red)
-                                      : Icon(Icons.favorite_border, color: red),
-                                ),
+                                  child: LikeWidget(
+                            initialLiked: items.liked,
+                            onLikedChanged: (bool isLiked) {
+                              items.liked = isLiked;
+                              // Update Firestore with the new liked status
+                              itemServices.likeOrDislikeProduct(
+                                id: items.id.toString(),
+                                userLikes: isLiked
+                                    ? [...items.userLikes, 'currentUserId'] // Add current user ID to likes
+                                    : items.userLikes..remove('currentUserId'), // Remove current user ID from likes
+                              );
+                            },
+                          ),
+                        ),
                                 Padding(
                                     padding: const EdgeInsets.only(right: 8.0),
                                     child: Icon(
@@ -101,7 +113,7 @@ class ItemsWidget extends StatelessWidget {
                                                 text: TextSpan(children: [
                                               TextSpan(
                                                   text: 
-                                                          items.oldprice +
+                                                          "NT " + items.oldprice.toString() +
                                                       "\n",
                                                   style: TextStyle(
                                                       fontSize: 18,
@@ -112,7 +124,7 @@ class ItemsWidget extends StatelessWidget {
                                                           .lineThrough)),
                                               TextSpan(
                                                   text: "\NT " +
-                                                          items.price,
+                                                          items.price.toString(),
                                                   style: TextStyle(
                                                       fontSize: 20,
                                                       color: red,

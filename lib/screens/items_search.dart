@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:millionflashapp/helpers/commons.dart';
 import 'package:millionflashapp/helpers/screen_navigation.dart';
+import 'package:millionflashapp/providers/app.dart';
 import 'package:millionflashapp/providers/items.dart';
-import 'package:millionflashapp/screens/ShoppingCart.dart';
+import 'package:millionflashapp/screens/cart.dart';
 import 'package:millionflashapp/screens/detail.dart';
 import 'package:millionflashapp/screens/home.dart';
 import 'package:millionflashapp/screens/search.dart';
@@ -19,7 +20,7 @@ class ItemSearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final itemsProvider = Provider.of<ItemsProvider>(context);
-    
+    // final app = Provider.of<AppProvider>(context);    
     return SafeArea(
       child: Scaffold(
         // appBar: AppBar(

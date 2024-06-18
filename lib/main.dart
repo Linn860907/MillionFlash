@@ -15,6 +15,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:millionflashapp/widgets/loading.dart';
 import 'package:provider/provider.dart'; 
 import 'firebase_options.dart';
+import 'package:get/get.dart';
 
 
 
@@ -34,9 +35,9 @@ void main() async {
         ChangeNotifierProvider(create: (_) => ItemsProvider.initialize()),
         ChangeNotifierProvider(create: (_) => LookBook21Provider.initialize()),
         ChangeNotifierProvider(create: (_) => LookBook22Provider.initialize()),
-        ChangeNotifierProvider(create: (_) => LookBook23Provider.initialize())
+        ChangeNotifierProvider(create: (_) => LookBook23Provider.initialize()),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'MillionFlash',
         theme: ThemeData(
