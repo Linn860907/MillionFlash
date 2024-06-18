@@ -27,22 +27,24 @@ class Lookbook21 extends StatelessWidget {
                   Center(
                     child: Loading(), // Show loading spinner at the center
                   ),
-                  Image.network(
-                    lookbook21Provider.lookbook21[index].image,
-                    loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child; // Image is fully loaded, show the image
-                      } else {
+                  Container(
+                    child: Image.network(
+                      lookbook21Provider.lookbook21[index].image,
+                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child; // Image is fully loaded, show the image
+                        } else {
+                          return Center(
+                            child: Loading(), // Show loading spinner while image is loading
+                          );
+                        }
+                      },
+                      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
                         return Center(
-                          child: Loading(), // Show loading spinner while image is loading
+                          child: Icon(Icons.error), // Show an error icon if image fails to load
                         );
-                      }
-                    },
-                    errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                      return Center(
-                        child: Icon(Icons.error), // Show an error icon if image fails to load
-                      );
-                    },
+                      },
+                    ),
                   ),
                 ],
               );

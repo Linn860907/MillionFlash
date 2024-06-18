@@ -11,6 +11,7 @@ class ItemModel {
   static const CATEGORY = 'category';
   static const FEATURED = 'featured';
   static const ITEMSID = 'itemsid';
+  static const DESCRIPTION = "description";
 
   late int _id;
   late String _name;
@@ -21,6 +22,7 @@ class ItemModel {
   late String _category;
   late bool _featured;
   late int _itemsId;
+  late String _description;
 
   late List<String> _userLikes;
 
@@ -33,6 +35,7 @@ class ItemModel {
   String get category => _category;
   bool get featured => _featured;
   int get itemsId => _itemsId;
+  String get description => _description;
 
   List<String> get userLikes => _userLikes;
 
@@ -52,6 +55,7 @@ class ItemModel {
       _featured = data[FEATURED] ?? false;
       _itemsId = data[ITEMSID] ?? '';
       _userLikes = List<String>.from(data[USER_LIKES] ?? []);
+      _description = data[DESCRIPTION] ?? '';
     } else {
       _id = 0;
       _name = '';
@@ -63,6 +67,7 @@ class ItemModel {
       _featured = false;
       _itemsId = 0;
       _userLikes = [];
+      _description = '';
     }
   }
 

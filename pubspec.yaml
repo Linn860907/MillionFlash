@@ -21,6 +21,8 @@ dependencies:
   cached_network_image: ^3.0.0
   get:
   uuid:
+  banner_carousel:
+  
   
 
 dev_dependencies:

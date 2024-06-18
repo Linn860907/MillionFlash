@@ -35,6 +35,7 @@ class _StoreState extends State<Store> {
         elevation: 0.5,
         backgroundColor: white,
         title: Text('MillionFlash'),
+        centerTitle: true,
         actions: <Widget>[
           GestureDetector(
             onTap: () {
@@ -44,34 +45,9 @@ class _StoreState extends State<Store> {
               padding: const EdgeInsets.all(8.0),
               child: Stack(
                 children: [
-                  Image.asset(
-                    'assets/category/shoppingcart.png',
-                    width: 30,
-                    height: 30,
-                  ),
-                  Positioned(
-                    right: 3,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: grey, offset: Offset(2, 1), blurRadius: 2),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 4, left: 4),
-                        child: CustomText(
-                          text: '2',
-                          color: red,
-                          size: 12,
-                          weight: FontWeight.bold,
-                          decoration: TextDecoration.none,
-                        ),
-                      ),
-                    ),
-                  )
+                  IconButton(icon:Icon(Icons.shopping_cart),onPressed: (){
+                    changeScreen(context, CartScreen());
+                  }),
                 ],
               ),
             ),

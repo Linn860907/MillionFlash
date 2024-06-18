@@ -46,33 +46,44 @@ class _DetailsState extends State<Details> {
     return Scaffold(
       key: _key,
       backgroundColor: white,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: black),
+        elevation: 0.5,
+        backgroundColor: white,
+        leading: IconButton(icon: Icon(Icons.close),onPressed: (){Navigator.pop(context);
+          }),
+        title: Text('MillionFlash'),
+        centerTitle: true,
+        actions: <Widget>[
+          GestureDetector(
+            onTap: () {
+              changeScreen(context, CartScreen());
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Stack(
+                children: [
+                  IconButton(icon:Icon(Icons.shopping_cart),onPressed: (){
+                    changeScreen(context, CartScreen());
+                  }),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
       body:SafeArea(
         child:Column(
       children: [
-        Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton( icon: Icon(Icons.arrow_back_ios),onPressed: (){Navigator.pop(context);},),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Stack(
-                        children: [
-                          IconButton(icon: Icon(Icons.shopping_cart),onPressed: (){
-                            changeScreen(context, CartScreen());
-                          })
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+        Container(
+            height: 350.0,
+            child: GridTile(
+              child: Container(
+                  color: Colors.white,
+                  child: Image.network(widget.items.image)),
+            ),
           ),
-        CarouselWithDotsPage(itemslist: itemsProvider.items, category: widget.items.category,),
+        // CarouselWithDotsPage(itemslist: itemsProvider.items, category: widget.items.category,),
         Column(
           children: [
             Row(
@@ -83,22 +94,26 @@ class _DetailsState extends State<Details> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      CustomText(text:'NT ${widget.items.price}', size: 20, color: red, weight: FontWeight.bold, decoration: TextDecoration.none, ),
                       CustomText(text:'NT ${widget.items.oldprice}', size: 14, color: grey, weight: FontWeight.normal, decoration: TextDecoration.lineThrough,),
-                  
+                      CustomText(text:'NT ${widget.items.price}', size: 20, color: red, weight: FontWeight.bold, decoration: TextDecoration.none, ),
                     ],
                   ),
-                ),
-                
+                ),    
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomText(text: widget.items.sname, size: 14, color: grey, weight: FontWeight.normal, decoration: TextDecoration.none,),
-
               ],
-            ),  
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CustomText(text: widget.items.description, size: 14, color: black, weight: FontWeight.normal, decoration: 
+                TextDecoration.none,),
+              ],
+            )
           ],
         ),
         SizedBox(height: 15,),

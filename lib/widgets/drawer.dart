@@ -85,18 +85,18 @@ class MyDrawer extends StatelessWidget{
                 },
               )
             ],),
-        ListTile(
-          onTap: () {
-            changeScreen(context, OrdersScreen());
-          },
-          // leading: Icon(Icons.store),
-          title: CustomText(
-              text: "Order",
-              size: 16,
-              color: black,
-              weight: FontWeight.normal,
-              decoration: TextDecoration.none),
-        ),
+        // ListTile(
+        //   onTap: () {
+        //     changeScreen(context, OrdersScreen());
+        //   },
+        //   // leading: Icon(Icons.store),
+        //   title: CustomText(
+        //       text: "Order",
+        //       size: 16,
+        //       color: black,
+        //       weight: FontWeight.normal,
+        //       decoration: TextDecoration.none),
+        // ),
         ListTile(
           onTap: () {
             changeScreen(context, AboutMillionFlash());
